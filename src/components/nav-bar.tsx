@@ -38,12 +38,6 @@ export function NavBar() {
       icon: <LayoutDashboard className="w-4 h-4 mr-2" />,
       active: pathname === "/dashboard",
     },
-    {
-      href: "/dashboard?tab=saved",
-      label: "Saved Courses",
-      icon: <BookmarkIcon className="w-4 h-4 mr-2" />,
-      active: pathname === "/dashboard" && pathname.includes("tab=saved"),
-    },
   ];
 
   return (
