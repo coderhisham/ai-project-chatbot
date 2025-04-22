@@ -3,7 +3,7 @@
 import { Dashboard } from "@/components/dashboard";
 import { Course } from "@/components/course-card";
 import { NavBar } from "@/components/nav-bar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 // Sample course data - in a real app, this would come from an API or database
 const sampleCourses: Course[] = [
@@ -89,6 +89,35 @@ const sampleCourses: Course[] = [
   },
 ];
 
+// Create a client component wrapper to handle the data fetching
+function DashboardContent({ courses }: { courses: Course[] }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <Suspense fallback={<DashboardSkeleton />}>
+        <Dashboard allCourses={courses} />
+      </Suspense>
+    </div>
+  );
+}
+
+// Simple skeleton loader
+function DashboardSkeleton() {
+  return (
+    <div className="space-y-6">
+      <div className="h-8 bg-muted/60 rounded-md w-1/3 animate-pulse"></div>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className="h-40 bg-muted/60 rounded-lg animate-pulse"
+          ></div>
+        ))}
+      </div>
+      <div className="h-60 bg-muted/60 rounded-lg animate-pulse"></div>
+    </div>
+  );
+}
+
 export default function DashboardPage() {
   const [courses, setCourses] = useState<Course[]>([]);
 
@@ -101,9 +130,7 @@ export default function DashboardPage() {
     <div className="flex flex-col min-h-screen">
       <NavBar />
       <main className="flex-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <Dashboard allCourses={courses} />
-        </div>
+        <DashboardContent courses={courses} />
       </main>
     </div>
   );
