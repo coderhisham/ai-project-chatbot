@@ -1,36 +1,226 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pathzy - AI Course Recommender
 
-## Getting Started
+An intelligent AI-powered platform that helps learners discover personalized course recommendations through natural language conversations. Built with Next.js 14 and powered by Google's Gemini AI.
 
-First, run the development server:
+## 🚀 Features
 
+### 🤖 AI-Powered Course Discovery
+- **Natural Language Chat Interface** - Ask about courses in plain English
+- **Intelligent Course Matching** - AI analyzes your query to recommend relevant courses
+- **Sample Prompts** - Get started with suggested queries like "I want to learn web development with React"
+
+### 📚 Comprehensive Course Management
+- **Course Cards** with detailed information (level, duration, provider)
+- **Save/Bookmark System** - Keep track of courses you're interested in
+- **Course Details** - AI-generated detailed course information including prerequisites and learning outcomes
+- **Direct Course Links** - AI-generated realistic URLs to course providers
+
+### 📊 Personalized Dashboard
+- **Saved Courses Management** - View and organize your bookmarked courses
+- **Learning Analytics** - Track courses by level, provider, and duration
+- **Advanced Filtering** - Search and filter courses by multiple criteria
+- **Learning Insights** - AI-powered analysis of your course selection
+
+### 🎯 Smart Features
+- **Course Insights** - AI analysis of how courses complement each other
+- **Learning Path Recommendations** - Understand course progression and career opportunities
+- **Provider Integration** - Support for major platforms (Coursera, Udemy, edX, LinkedIn Learning, Pluralsight)
+- **Responsive Design** - Optimized for desktop and mobile devices
+
+## 🛠 Tech Stack
+
+- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **AI Integration**: [Google Gemini AI](https://ai.google.dev/) for course recommendations
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom gradients
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) with Radix UI primitives
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) with persistence
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **TypeScript**: Full type safety throughout
+- **Package Manager**: pnpm
+
+## 🏁 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm/yarn
+- Google Gemini API key
+
+### Installation
+
+1. **Clone the repository:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/pathzy-ai-course-recommender.git
+cd pathzy-ai-course-recommender
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies:**
+```bash
+pnpm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Set up environment variables:**
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Add your environment variables:
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-## Learn More
+4. **Run the development server:**
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. **Open your browser:**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/                          # Next.js App Router
+│   ├── api/                     # API routes
+│   │   ├── chat/               # Course recommendation endpoint
+│   │   ├── course-details/     # Detailed course information
+│   │   ├── course-url/         # Course URL generation
+│   │   └── insights/           # AI learning path analysis
+│   ├── dashboard/              # Dashboard page
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Home page
+├── components/                   # React components
+│   ├── ui/                     # shadcn/ui base components
+│   ├── chat-interface.tsx      # Main chat interface
+│   ├── course-card.tsx         # Individual course display
+│   ├── course-list.tsx         # Course grid display
+│   ├── course-filters.tsx      # Filtering functionality
+│   ├── course-suggestion.tsx   # AI insights dialog
+│   ├── dashboard.tsx           # Dashboard analytics
+│   ├── hero-section.tsx        # Landing page hero
+│   └── nav-bar.tsx             # Navigation component
+└── lib/                        # Utilities and configuration
+    ├── store/                  # Zustand state management
+    │   └── savedCoursesStore.ts # Course bookmarking
+    └── gemini.ts               # AI integration
+```
 
-## Deploy on Vercel
+## 🔧 Key Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### [`ChatInterface`](src/components/chat-interface.tsx)
+- Main conversational interface for course discovery
+- Handles user queries and AI responses
+- Manages course recommendations and feedback
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### [`CourseCard`](src/components/course-card.tsx)
+- Displays individual course information
+- Bookmark/save functionality
+- AI-generated course details and URLs
+- Social sharing capabilities
+
+### [`Dashboard`](src/components/dashboard.tsx)
+- Analytics and saved course management
+- Advanced filtering and search
+- Learning statistics and insights
+
+### [`CourseSuggestion`](src/components/course-suggestion.tsx)
+- AI-powered learning path analysis
+- Course relationship insights
+- Personalized recommendations
+
+## 🌐 API Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `/api/chat` | Generate course recommendations from user queries |
+| `/api/course-details` | Get detailed course information using AI |
+| `/api/course-url` | Generate realistic course URLs |
+| `/api/insights` | Analyze course selections and provide learning insights |
+
+## 🎨 Features in Detail
+
+### AI-Powered Recommendations
+The platform uses Google's Gemini AI to:
+- Parse natural language queries
+- Generate relevant course suggestions
+- Create detailed course descriptions
+- Provide learning path analysis
+
+### Course Management
+- **Bookmarking System**: Save courses with persistent storage
+- **Detailed Information**: AI-generated course details including prerequisites
+- **Provider Integration**: Support for major learning platforms
+- **Smart Filtering**: Search by level, provider, duration, and more
+
+### Learning Analytics
+- **Progress Tracking**: Monitor saved courses by category
+- **Provider Statistics**: See which platforms you prefer
+- **Level Distribution**: Track learning progression
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. **Push to GitHub:**
+```bash
+git push origin main
+```
+
+2. **Deploy on Vercel:**
+   - Import your repository on [Vercel](https://vercel.com)
+   - Add environment variables
+   - Deploy automatically
+
+### Environment Variables for Production
+
+```env
+GEMINI_API_KEY=your_production_gemini_api_key
+NEXT_PUBLIC_APP_URL=https://your-domain.com
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 Development Scripts
+
+```bash
+pnpm dev          # Start development server
+pnpm build        # Build for production
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+pnpm type-check   # TypeScript type checking
+```
+
+## 🔮 Future Enhancements
+
+- [ ] User authentication and profiles
+- [ ] Course progress tracking
+- [ ] Social features and course sharing
+- [ ] Integration with more learning platforms
+- [ ] Advanced recommendation algorithms
+- [ ] Course reviews and ratings
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Google Gemini AI** for powering intelligent recommendations
+- **Next.js team** for the amazing framework
+- **shadcn** for the beautiful UI components
+- **Vercel** for seamless deployment
+
+---
+
+**Pathzy AI Course Recommender** - Discover your next learning adventure with the power of AI! 🎓✨
+
+*Ask, Discover, Learn - Your personalized course journey starts here.*
