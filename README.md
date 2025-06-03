@@ -29,7 +29,7 @@ An intelligent AI-powered platform that helps learners discover personalized cou
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
 - **AI Integration**: [Google Gemini AI](https://ai.google.dev/) for course recommendations
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom gradients
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) with Radix UI primitives
